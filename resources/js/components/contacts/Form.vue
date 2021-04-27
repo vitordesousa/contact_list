@@ -16,7 +16,7 @@
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<b-form :action="getAction" method="post" class="form-horizontal" @submit.prevent="onSubmit">
 					<input type="hidden" name="_token" :value="csrfToken" />
-					<input v-if="inEdit" type="hidden" name="_method" value="PUT" />
+					<!-- <input v-if="this.inEdit == true" type="hidden" name="_method" value="PUT" /> -->
 
 					<div class="row">
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -164,8 +164,6 @@
 			
 			
 			onSubmit() {
-				console.log('submit!')
-				
 				this.$v.$touch()
 
 				if (this.$v.$invalid) {
@@ -174,7 +172,7 @@
 					this.checkErros()
 				} else {
 					axios({
-						method		:	this.inEdit == true ? 'put' : 'post',
+						method		:	this.inEdit ? 'put' : 'post',
 						url 		:	this.getAction, 
 						data		:	{ 
 							csrfToken					:	this.csrfToken,
