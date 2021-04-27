@@ -23,4 +23,4 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/contacts', [App\Http\Controllers\ContactsController::class, 'index'])->name('contacts.index');
-Route::resource('contacts', '\App\Http\Controllers\ContactController')->except(['index'])->middleware('auth');
+Route::resource('contacts', '\App\Http\Controllers\ContactsController')->except(['index'])->middleware('auth');
