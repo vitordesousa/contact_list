@@ -6,6 +6,7 @@ use App\Models\Contact;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\ContactStoreRequest;
+use App\Http\Requests\ContactUpdateRequest;
 
 class ContactsController extends Controller
 {
@@ -71,7 +72,7 @@ class ContactsController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update(Request $request, Contact $contact)
+	public function update(ContactUpdateRequest $request, Contact $contact)
 	{
 		$contact->update($request->only('name', 'email', 'contact'));
 	}

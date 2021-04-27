@@ -188,10 +188,10 @@
 								title		:	'Sucesso!',
 								html		:	this.inEdit == true ? "Informações atualizadas com sucesso!" : "Informações inseridas com sucesso!"
 							})
-							setTimeout(() => {
+							/* setTimeout(() => {
 								//Location.reload()
 								window.location.href = "/contacts"
-							}, 1000);
+							}, 1000); */
 						}
 						return false;
 					}) .catch((e) => { 
