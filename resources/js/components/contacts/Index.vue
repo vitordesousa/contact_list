@@ -16,8 +16,8 @@
 				]
 			}
 		},
-		mounted(){
-			console.log('criado')
+		created(){
+			console.log(this.contacts)
 		},
 		methods: {
 		}
