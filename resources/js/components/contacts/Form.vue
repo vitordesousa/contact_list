@@ -127,7 +127,7 @@
 			email: {
 				required		,
 				email 			,
-				minLength		: minLength(8),
+				minLength		: minLength(5),
 				maxLength		: maxLength(255),
 				checkEmail		,
 			},
@@ -138,8 +138,6 @@
 			},
 
 			checkErros() {
-				console.log('entrou')
-
 				if(this.$v.$invalid){
 					var txt2 = '<p class="text-left"><strong>Ainda há campos que precisam de sua atenção!</strong><br><br>'
 
@@ -182,16 +180,15 @@
 						}
 					}).then((response) => { 
 						if (response.status === 200 || response.status === 201) { 
-							//this.submitStatus = 'PENDING'
+							this.submitStatus = 'PENDING'
 							Swal.fire({
 								icon		:	'success',
 								title		:	'Sucesso!',
 								html		:	this.inEdit == true ? "Informações atualizadas com sucesso!" : "Informações inseridas com sucesso!"
 							})
-							/* setTimeout(() => {
-								//Location.reload()
+							setTimeout(() => {
 								window.location.href = "/contacts"
-							}, 1000); */
+							}, 1000);
 						}
 						return false;
 					}) .catch((e) => { 

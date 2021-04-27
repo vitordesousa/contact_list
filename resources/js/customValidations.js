@@ -1,8 +1,7 @@
 export const checkPhone = (value) => {
 
 	console.log(value)
-	return true
-	/* if(value.length > 8){
+	if(value.length > 8){
 		return axios.get(`/contacts/check-data/${value}/1`, { 
 			data: value, 
 		}).then((response) => { 
@@ -14,12 +13,11 @@ export const checkPhone = (value) => {
 		}); 
 	} else {
 		return false
-	} */
+	}
 }
 
 export const checkEmail = (value) => {
-	return true
-	/* if(value.length > 10){
+	if(value.length > 6){
 		return axios.get(`/contacts/check-data/${value}/2`, { 
 			data: value, 
 		}).then((response) => { 
@@ -31,5 +29,5 @@ export const checkEmail = (value) => {
 		}); 
 	} else {
 		return false
-	} */
+	}
 }
