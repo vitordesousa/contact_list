@@ -25,6 +25,7 @@ Vue.use(Vuelidate)
 
 Vue.component('contacts-index', require('./components/contacts/Index.vue').default);
 Vue.component('contacts-form', require('./components/contacts/Form.vue').default);
+Vue.component('contacts-show', require('./components/contacts/Form.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

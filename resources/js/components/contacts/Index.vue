@@ -20,8 +20,9 @@
 					</template>
 
 					<template  v-slot:cell(actions)="data">
-						<a :href="`/contacts/${data.item.id}/edit`" class="btn btn-info btn-sm" title="Editar"><i class="fas fa-edit"></i></a>
-						<button @click="remove(data.item)" class="btn btn-danger btn-sm" title="Remover"><i class="fas fa-trash"></i> </button>
+						<a :href="`/contacts/${data.item.id}`" class="btn btn-info btn-sm" title="Visualizar"><i class="fas fa-eye"></i> Visualizar</a>
+						<a :href="`/contacts/${data.item.id}/edit`" class="btn btn-warning btn-sm" title="Editar"><i class="fas fa-edit"></i> Editar</a>
+						<button @click="remove(data.item)" class="btn btn-danger btn-sm" title="Remover"><i class="fas fa-trash"></i> Remover</button>
 					</template>
 
 					<template slot="empty">

@@ -3,9 +3,15 @@
 		<div class="row p-3">
 
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-				<h2 v-if="!inEdit">Adicionar Contato</h2>
-				<h2 v-if="inEdit">Editar Contato {{contact.name}}</h2>
+				<h2 v-if="!inEdit && !inShow">Adicionar Contato</h2>
+				<h2 v-if="inEdit || inShow">Editar Contato {{contactData.name}}</h2>
+				
+				<a :href="`/contacts/${contactData.id}/edit`" class="btn btn-warning btn-sm float-right" v-if="inShow">
+					<i class="fas fa-edit"></i> Editar este contato
+				</a>
 			</div>
+
+			
 
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<b-form :action="getAction" method="post" class="form-horizontal" @submit.prevent="onSubmit">
@@ -17,7 +23,7 @@
 							<div class="form-group">
 								<label for="name" class="label-validation">Nome [*]</label>
 								<div class="input-validation">
-									<input type="text" name="name" id="name" v-model="name" class="form-control" v-model.trim="$v.name.$model" placeholder="Digite o nome do contato" maxlenght="255">
+									<input type="text" name="name" id="name" v-model="name" class="form-control" :readonly="this.inShow ? true : false" v-model.trim="$v.name.$model" placeholder="Digite o nome do contato" maxlenght="255">
 								</div>
 
 								<div class="alert alert-danger" v-if="!$v.name.required && $v.name.$dirty">O campo <strong>Nome</strong> é obrigatório.</div>
@@ -34,7 +40,7 @@
 							<div class="form-group">
 								<label for="contact" class="label-validation">Telefone [*]</label>
 								<div class="input-validation">
-									<b-form-input v-mask="['### ### ###']"  type="text" name="contact" id="contact" v-model.trim="$v.contact.$model" class="form-control" placeholder="Digite o telefone" maxlenght="9"></b-form-input>
+									<b-form-input v-mask="['### ### ###']"  type="text" name="contact" id="contact" :readonly="this.inShow ? true : false" v-model.trim="$v.contact.$model" class="form-control" placeholder="Digite o telefone" maxlenght="9"></b-form-input>
 								</div>
 
 								<div class="alert alert-danger" v-if="!$v.contact.required && $v.contact.$dirty">O campo  <strong>Telefone</strong> é obrigatório.</div>
@@ -51,7 +57,7 @@
 							<div class="form-group">
 								<label for="email" class="label-validation">E-mail [*]</label>
 								<div class="input-validation">
-									<input type="text" name="email" id="email" v-model="email" class="form-control" v-model.trim="$v.email.$model" placeholder="Digite o e-mail" maxlenght="255">
+									<input type="text" name="email" id="email" v-model="email" class="form-control" :readonly="this.inShow ? true : false" v-model.trim="$v.email.$model" placeholder="Digite o e-mail" maxlenght="255">
 
 									<div class="alert alert-danger" v-if="!$v.email.required && $v.email.$dirty">O campo  <strong>E-mail</strong> é obrigatório.</div>
 									<div class="alert alert-danger" v-if="!$v.email.checkEmail">O e-mail digitado <strong>já se encontra em nosso banco de dados</strong></div>
@@ -64,7 +70,7 @@
 						</div>
 					</div>
 
-					<div class="row">
+					<div class="row" v-if="!this.inShow">
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							<div class="form-group has-feedback">
 								<button type="submit" class="btn btn-success btn-block" id="submit" :disabled="submitStatus === 'PENDING'" >Enviar</button>
@@ -90,7 +96,7 @@
 			Swal, TheMask
 		},
 
-		props: [ 'contactData', 'errors', 'inEdit'],
+		props: [ 'contactData', 'errors', 'inEdit', 'inShow'],
 		data() {
 			return {
 				submitStatus	:	null,
@@ -100,7 +106,7 @@
 			}
 		},
 		created() {
-			if (this.inEdit) {
+			if (this.inEdit || this.inShow) {
 				this.name			= this.contactData.name
 				this.contact		= this.contactData.contact
 				this.email			= this.contactData.email
