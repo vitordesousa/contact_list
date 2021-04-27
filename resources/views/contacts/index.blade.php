@@ -1,4 +1,5 @@
 @extends('layouts.myLayout')
+@section('title')Meus contatos @endsection
 @section('content')
-	Contatos
+	<contacts-index :contacts="{{ $contacts }}"></contacts-index>
 @endsection

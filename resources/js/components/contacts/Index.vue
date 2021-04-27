@@ -7,8 +7,7 @@
 <script>	
 	export default {
 		props: ['contacts'],
-		data() { 
-
+		data() {
 			return {
 				fields: [
 					{ key: 'id', sortable: true, label: 'ID' },
@@ -16,6 +15,9 @@
 					{ key: 'actions' }
 				]
 			}
+		},
+		mounted(){
+			console.log('criado')
 		},
 		methods: {
 		}
