@@ -66,7 +66,7 @@
 								Swal.fire('', 'Contato removido com sucesso!', 'success')
 
 								setTimeout(() => {
-									Location.reload()
+									window.location.href = "/contacts"
 								}, 1500);
 							}
 						}).catch((e) => {
