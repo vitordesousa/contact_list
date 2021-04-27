@@ -1,5 +1,14 @@
 const mix = require('laravel-mix');
 
+let webpackConfig = {
+    resolve: {
+        alias: {
+            //'vue$':  'node_modules/vue/dist/vue.esm',
+            'vue$':  'vue/dist/vue.common.js',
+        }
+    }
+};
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -11,8 +20,8 @@ const mix = require('laravel-mix');
  |
  */
 
-mix
-//.setPublicPath('public')
+mix.webpackConfig(webpackConfig)
+.setPublicPath('public')
 .js('resources/js/app.js', 'public/js').vue()
     .sass('resources/sass/app.scss', 'public/css')
     .sourceMaps();

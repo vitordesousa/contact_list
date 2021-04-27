@@ -1,10 +1,12 @@
-import Vue from 'vue/dist/vue'
+//import Vue from 'vue/dist/vue'
+import Vue from 'vue/dist/vue.common.js'
+//import Vue from 'vue/dist/vue.esm.js'
 
 window.Vue = Vue
 require('./bootstrap');
 
 // vue
-window.Vue = require('vue');
+//window.Vue = require('vue');
 
 // bootstrap vue
 import BootstrapVue from 'bootstrap-vue'
@@ -21,8 +23,8 @@ Vue.use(mask)
 import Vuelidate from 'vuelidate'
 Vue.use(Vuelidate)
 
-
 Vue.component('contacts-index', require('./components/contacts/Index.vue').default);
+Vue.component('contacts-form', require('./components/contacts/Form.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

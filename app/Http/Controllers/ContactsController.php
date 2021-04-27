@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 
+use App\Http\Requests\ContactStoreRequest;
+
 class ContactsController extends Controller
 {
 	/**
@@ -34,7 +36,7 @@ class ContactsController extends Controller
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function store(Request $request)
+	public function store(ContactStoreRequest $request)
 	{
 		return Contact::create($request->only('name', 'email', 'contact'));
 	}

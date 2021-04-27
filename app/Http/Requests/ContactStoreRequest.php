@@ -25,8 +25,8 @@ class ContactStoreRequest extends FormRequest
 	{
 		return [
 			'name'						=> ['required', 'min:5', 'max:255'],
-			'contact'					=> ['required', 'min:9', 'max:9', 'unique:users'],
-			'email'						=> ['required', 'min:5', 'max:255', 'email', 'unique:users'],
+			'contact'					=> ['required', 'min:11', 'max:11', 'unique:contacts'],
+			'email'						=> ['required', 'min:5', 'max:255', 'email', 'unique:contacts'],
 		];
 	}
 	public function attributes()
