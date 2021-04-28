@@ -87,4 +87,26 @@ class ContactsController extends Controller
 	{
 		$contact->delete();
 	}
+	 
+
+
+	public function checkData($data, $type){
+
+		if($type == 1){ // Phone
+			$typeSearch = 'contact';
+		} else if($type == 2){
+			$typeSearch = 'email';
+		}
+
+		$contact = Contact::where($typeSearch, $data)->first();
+		$url = explode('/', request()->url());
+		$id  = last($url);
+
+		if($contact && $contact->id == $id){
+			return true;
+		} else if(!$contact){
+			return true;
+		}
+		return false;
+	}
 }

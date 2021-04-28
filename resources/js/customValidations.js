@@ -1,6 +1,4 @@
 export const checkPhone = (value) => {
-
-	console.log(value)
 	if(value.length > 8){
 		return axios.get(`/contacts/check-data/${value}/1`, { 
 			data: value, 
@@ -12,7 +10,7 @@ export const checkPhone = (value) => {
 			return false; 
 		}); 
 	} else {
-		return false
+		return true
 	}
 }
 
@@ -28,6 +26,6 @@ export const checkEmail = (value) => {
 			return false; 
 		}); 
 	} else {
-		return false
+		return true
 	}
 }
